@@ -81,6 +81,7 @@ export default {
     color: $text-color;
     box-sizing: border-box;
     padding-right: 2.3rem;
+    padding-left: 0.3rem;
     &:focus {
       border-color: $primary-dark;
     }
