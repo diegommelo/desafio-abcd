@@ -7,16 +7,14 @@
 </template>
 
 <script>
-import BaseLayout from '@/views/Layouts/BaseLayout.vue'
+import BaseLayout from "@/views/Layouts/BaseLayout.vue";
 
 export default {
-  name: 'Kids',
+  name: "Kids",
   components: {
-    BaseLayout
+    BaseLayout,
   },
-}
+};
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>

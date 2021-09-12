@@ -5,9 +5,19 @@
       <form @submit.prevent="onLogin">
         <div class="form-group">
           <b-label for="email">Email</b-label>
-          <b-input type="email" :value="form.email" name="email" icon="envelope"></b-input>
+          <b-input
+            type="email"
+            v-model="form.email"
+            name="email"
+            icon="envelope"
+          ></b-input>
           <b-label for="password">Senha</b-label>
-          <b-input type="password" :value="form.password" name="password" icon="eye-slash"></b-input>
+          <b-input
+            type="password"
+            v-model="form.password"
+            name="password"
+            icon="eye-slash"
+          ></b-input>
         </div>
         <b-button type="submit" classes="is-primary">Login</b-button>
         <b-button classes="is-secondary">Esqueci a Senha</b-button>
@@ -17,93 +27,89 @@
 </template>
 
 <script>
-import BaseInput from '@/components/Base/BaseInput'
-import BaseLabel from '@/components/Base/BaseLabel'
-import BaseButton from '@/components/Base/BaseButton'
-import Logo from '@/components/Logo'
+import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
 
 export default {
-  name: 'Login',
-  data () {
+  name: "Login",
+  data() {
     return {
       form: {
-        email: '',
-        password: ''
-      }
-    }
-  },
-  components: {
-    'b-label': BaseLabel,
-    'b-input': BaseInput,
-    'b-button': BaseButton,
-    Logo
+        email: "",
+        password: "",
+      },
+    };
   },
   computed: {
-    background () {
+    background() {
       return {
-        backgroundImage: `url(${require('@/assets/login_bg.png')})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }
-    }
+        backgroundImage: `url(${require("@/assets/login_bg.png")})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      };
+    },
   },
   methods: {
-    onLogin () {
-      this.$router.push('/kids')
-    }
-  }
-}
+    onLogin() {
+      console.log(this.form.email);
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, this.form.email, this.form.password)
+        .then((user) => {
+          console.log(user);
+          this.$router.push("/kids");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+  },
+};
 </script>
 
 <style lang="scss">
- @import '@/scss/styles.scss';
+@import "@/scss/styles.scss";
 
-  .login {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .login-wrapper {
-    width: 70vw;
-    margin: 0 auto;
-    background-color: $white;
-    padding: 30px;
-    border-radius: 25px;
-    box-shadow: 0px 5px 0 $white-box-shadow;
-  }
-
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.login-wrapper {
+  width: 70vw;
+  margin: 0 auto;
+  background-color: $white;
+  padding: 30px;
+  border-radius: 25px;
+  box-shadow: 0px 5px 0 $white-box-shadow;
+}
 
 //ipad
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-   .login-wrapper {
+  .login-wrapper {
     width: 30vw !important;
   }
 }
 
 //responsive
 @media screen and (min-width: 376px) {
-
 }
 
 @media screen and (min-width: 576px) {
-   .login-wrapper {
+  .login-wrapper {
     width: 20vw;
   }
 }
 
 @media screen and (min-width: 768px) {
-
 }
 @media screen and (min-width: 992px) {
-
 }
 
 @media screen and (min-width: 1200px) {
-   .login-wrapper {
+  .login-wrapper {
     width: 15vw;
-  }  
-} 
+  }
+}
 </style>

@@ -8,25 +8,25 @@
 </template>
 
 <script>
-import MenuLateral from '@/components/Elements/MenuLateral.vue'
+import MenuLateral from "@/components/Elements/MenuLateral.vue";
 export default {
-  name: 'BaseLayout',
+  name: "BaseLayout",
   components: {
-    MenuLateral
-  }
-}
+    MenuLateral,
+  },
+};
 </script>
 
 <style lang="scss">
-@import '../../scss/styles.scss';
+@import "../../scss/styles.scss";
 
-  .base-layout {
-    display: flex;
-    width: 100%;
-    height: 100vh;
-  }
-  .content {
-    width: 80vw;
-    background-color: $background-color;
-  }
+.base-layout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+.content {
+  width: 80vw;
+  background-color: $background-color;
+}
 </style>

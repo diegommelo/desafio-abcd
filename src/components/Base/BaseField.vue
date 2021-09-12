@@ -8,22 +8,22 @@
 
 <script>
 export default {
-  name: 'BaseField',
+  name: "BaseField",
   props: {
     icon: {
       type: String,
-      default: null
-    }
-  }
-}
+      default: null,
+    },
+  },
+};
 </script>
 
 <style>
-  .base-field i {
-    position: absolute;
-  }
-  .icon {
-    padding: 10px;
-    width: 100%;
-  }
+.base-field i {
+  position: absolute;
+}
+.icon {
+  padding: 10px;
+  width: 100%;
+}
 </style>

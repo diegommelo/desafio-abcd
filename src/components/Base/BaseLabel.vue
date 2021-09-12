@@ -6,23 +6,23 @@
 
 <script>
 export default {
-  name: 'BaseLabel',
+  name: "BaseLabel",
   props: {
     for: {
       type: String,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss">
-  @import '@/scss/_variables.scss';
+@import "@/scss/_variables.scss";
 
-  .base-label {
-    display: inline-block;
-    font-size: 1.05rem;
-    margin: 10px 0 0 0;
-    color: $primary;
-  }
+.base-label {
+  display: inline-block;
+  font-size: 1.05rem;
+  margin: 10px 0 0 0;
+  color: $primary;
+}
 </style>
