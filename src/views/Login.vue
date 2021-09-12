@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     onLogin () {
-      this.$router.push('/')
+      this.$router.push('/kids')
     }
   }
 }
