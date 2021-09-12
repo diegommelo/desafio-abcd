@@ -48,18 +48,35 @@
           Configurações
         </li>
       </router-link>
+      <a href="#" @click="onLogout">
+        <li>
+          <font-awesome-icon icon="sign-out-alt" size="lg" class="menu-lateral-icon" />
+          Sair
+        </li>
+      </a>
     </ul>
   </nav>
 </template>
 
 <script>
 import Logo from "@/components/Logo.vue";
+import { mapActions } from "vuex";
 
 export default {
   name: "MenuLateral",
   components: {
     Logo,
   },
+  methods: {
+    ...mapActions(["userLogout"]),
+    onLogout() {
+      this.userLogout().then(() => {
+        this.$router.push("/login");
+      }).catch(() => {
+        console.log(this.errorMessage);
+      });
+    }
+  }
 };
 </script>
 

@@ -3,6 +3,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import config from "./config/firebase-config.js";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
@@ -26,8 +27,16 @@ Vue.component("Logo", Logo);
 
 Vue.config.productionTip = false;
 
-new Vue({
-  router,
-  store,
-  render: (h) => h(App),
-}).$mount("#app");
+let app = "";
+const auth = getAuth();
+
+auth.onAuthStateChanged(() => {
+  Vue.prototype.$auth = auth;
+  if(!app) {
+    app = new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount("#app");
+  }
+});

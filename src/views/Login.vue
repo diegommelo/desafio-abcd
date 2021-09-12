@@ -20,14 +20,15 @@
           ></b-input>
         </div>
         <b-button type="submit" classes="is-primary">Login</b-button>
-        <b-button classes="is-secondary">Esqueci a Senha</b-button>
       </form>
+      <b-button classes="is-secondary">Esqueci a Senha</b-button>
     </div>
   </section>
 </template>
 
 <script>
-import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import {mapActions, mapGetters} from 'vuex'
+
 
 export default {
   name: "Login",
@@ -40,6 +41,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["isError", "isLoggedIn", "errorMessage"]),
     background() {
       return {
         backgroundImage: `url(${require("@/assets/login_bg.png")})`,
@@ -50,19 +52,15 @@ export default {
     },
   },
   methods: {
+    ...mapActions(["userLogin"]),
     onLogin() {
-      console.log(this.form.email);
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, this.form.email, this.form.password)
-        .then((user) => {
-          console.log(user);
-          this.$router.push("/kids");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      this.userLogin(this.form).then(() => {
+        this.$router.push("/kids");
+      }).catch(() => {
+        console.log(this.errorMessage)
+      })
     },
-  },
+  }
 };
 </script>
 
