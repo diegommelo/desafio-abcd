@@ -45,13 +45,14 @@ export default {
     padding: 0.5rem 1rem;
     border-radius: 15px;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 2;
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    margin: 10px 0;
     width: 100%;
   }
 </style>

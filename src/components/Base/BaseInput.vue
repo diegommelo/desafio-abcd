@@ -71,7 +71,6 @@ export default {
     margin: 10px 0;
     font-size: 1.2rem;
     color: $text-color;
-    margin: 10px 0;
     &:focus {
       border-color: $primary-dark;
     }
