@@ -8,6 +8,10 @@ body {
   color: $text-color;
 }
 
+a {
+  text-decoration: none;
+}
+
 //BUTTONS
 .is-primary {
   background-color: $primary;

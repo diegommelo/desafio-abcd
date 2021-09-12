@@ -5,9 +5,9 @@
       <form @submit.prevent="onLogin">
         <div class="form-group">
           <b-label for="email">Email</b-label>
-          <b-input type="email" :value="form.email" name="email"></b-input>
+          <b-input type="email" :value="form.email" name="email" icon="envelope"></b-input>
           <b-label for="password">Senha</b-label>
-          <b-input type="password" :value="form.password" name="password"></b-input>
+          <b-input type="password" :value="form.password" name="password" icon="eye-slash"></b-input>
         </div>
         <b-button type="submit" classes="is-primary">Login</b-button>
         <b-button classes="is-secondary">Esqueci a Senha</b-button>

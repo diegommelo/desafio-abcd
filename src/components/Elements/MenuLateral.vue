@@ -3,6 +3,7 @@
     <Logo size="small"/>
     <ul>
       <li>
+        <font-awesome-icon icon="user" />
         <router-link to="/">Home</router-link>
       </li>
       <li>
@@ -32,10 +33,6 @@ export default {
 <style lang="scss">
 @import '../../scss/_variables.scss';
 
-.menu-lateral {
-  width: 20vw;
-  background-color: $white;
-}
 ul {
   list-style: none;
   padding: 0;
@@ -43,5 +40,9 @@ ul {
 li {
   padding: 10px;
   border-bottom: 1px solid #ccc;
+}
+.menu-lateral {
+  width: 20vw;
+  background-color: $white;
 }
 </style>
