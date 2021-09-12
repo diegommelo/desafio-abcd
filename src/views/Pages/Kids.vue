@@ -9,15 +9,21 @@
 
 <script>
 import BaseLayout from "@/views/Layouts/BaseLayout.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Kids",
   components: {
     BaseLayout,
   },
+  methods: {
+    ...mapActions(["bindKids"]),
+  },
   computed: {
     ...mapGetters(["kids"]),
+  },
+  created() {
+    this.bindKids();
   }
 };
 </script>

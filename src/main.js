@@ -2,9 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
-import config from "./config/firebase-config.js";
+import firebase from "firebase/app";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -17,8 +15,6 @@ import Logo from "@/components/Logo";
 library.add(fas);
 dom.watch();
 
-initializeApp(config);
-
 Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.component("b-input", BaseInput);
 Vue.component("b-label", BaseLabel);
@@ -28,10 +24,7 @@ Vue.component("Logo", Logo);
 Vue.config.productionTip = false;
 
 let app = "";
-const auth = getAuth();
-
-auth.onAuthStateChanged(() => {
-  Vue.prototype.$auth = auth;
+firebase.auth().onAuthStateChanged(() => {
   if(!app) {
     app = new Vue({
       router,

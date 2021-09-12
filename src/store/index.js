@@ -1,19 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import {getAuth, signInWithEmailAndPassword} from "firebase/auth";
-import {getFirestore} from "firebase/firestore";
+import firebase from "firebase/app";
+import {db} from "@/config/firebase-db";
 import {vuexfireMutations, firestoreAction} from "vuexfire";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   state: {
     user: {
       id: "",
-      name: "",
       email: "",
-      avatar: "",
-      token: ""
     },
     isLoggedIn: false,
     isLoading: false,
@@ -26,7 +23,8 @@ export default new Vuex.Store({
   mutations: {
     ...vuexfireMutations,
     setUser(state, user) {
-      state.user = user;
+      state.user.email = user.email;
+      state.user.id = user.uid;
     },
     setIsLoggedIn(state, isLoggedIn) {
       state.isLoggedIn = isLoggedIn;
@@ -51,6 +49,9 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    bindKids: firestoreAction(({ bindFirestoreRef }) => {
+      return bindFirestoreRef("kids", db.collection("kids"));
+    }),
     setUser({ commit }, user) {
       commit("setUser", user);
     },
@@ -72,13 +73,9 @@ export default new Vuex.Store({
     setSuccessMessage({ commit }, successMessage) {
       commit("setSuccessMessage", successMessage);
     },
-    bindKids: firestoreAction(({ bindFirestoreRef }) => {
-      return bindFirestoreRef("kids", getFirestore.firestore().collection("kids"));
-    }),
     userLogin({ commit }, payload) {
-      const auth = getAuth();
       return new Promise((resolve, reject) => {
-        signInWithEmailAndPassword(auth, payload.email, payload.password)
+        firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
         .then((user) => {
           commit("setUser", user);
           commit("setIsLoggedIn", true);
@@ -92,9 +89,8 @@ export default new Vuex.Store({
       });
     },
     userLogout({ commit }) {
-      const auth = getAuth();
       return new Promise((resolve, reject) => {
-        auth.signOut().then(() => {
+        firebase.auth().signOut().then(() => {
           commit("setUser", {});
           commit("setIsLoggedIn", false);
           resolve();
@@ -115,6 +111,15 @@ export default new Vuex.Store({
     errorMessage: state => state.errorMessage,
     isSuccess: state => state.isSuccess,
     successMessage: state => state.successMessage,
-    kids: state => state.kids,
+    kids: state => state.kids.map(kid => {
+      return {
+        nome: kid.nome,
+        imagem: kid.imagem,
+        ano: kid.ano,
+        id: kid.id,
+      }
+    }),
   }
 });
+
+export default store;
