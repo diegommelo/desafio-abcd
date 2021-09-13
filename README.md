@@ -33,10 +33,10 @@ $ npm run serve
 
 ## To-do
 
-- Search
+- Improve Search
 - Better form validation
 - Improve mobile navigation
-- Avatar selector
+- Better Avatar selector
 - Unit tests
 - Better notifications
 
