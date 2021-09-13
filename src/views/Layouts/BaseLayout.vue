@@ -26,6 +26,5 @@ export default {
 }
 .content {
   width: 80vw;
-  background-color: $background-color;
 }
 </style>

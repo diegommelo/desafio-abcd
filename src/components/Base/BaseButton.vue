@@ -5,6 +5,10 @@
     :disabled="disabled"
     @click="handleClick"
   >
+      <i
+        v-if="icon"
+        :class="['icon-button', 'fas', `fa-${icon}`, 'fa-lg']"
+      ></i>
     <slot></slot>
   </button>
 </template>
@@ -19,7 +23,7 @@ export default {
     },
     type: {
       type: String,
-      default: "primary",
+      default: "text",
     },
     size: {
       type: String,
@@ -33,6 +37,9 @@ export default {
       type: [String, Array],
       default: "",
     },
+    icon: {
+      type: String,
+          }
   },
   methods: {
     handleClick() {
@@ -43,7 +50,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/scss/styles.scss";
+@import "@/scss/_variables.scss";
 
 .base-button {
   display: inline-block;
@@ -59,5 +66,11 @@ export default {
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   margin: 10px 0;
   width: 100%;
+}
+.base-button:hover {
+  filter: hue-rotate(60deg);
+}
+.icon-button {
+  padding-right: 0.5rem;
 }
 </style>

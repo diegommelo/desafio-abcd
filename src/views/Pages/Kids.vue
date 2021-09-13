@@ -1,10 +1,10 @@
 <template>
   <BaseLayout>
   <div class="container">
-    <h1>Kids</h1>
+    <SearchBar />
     <div class="kids-wrapper">
       <div v-for="(value, index) in kidsOrderedByYear" :key="index" class="kids-year">
-        <div class="kids-year-title">
+        <div v-if="value.length > 0" class="kids-year-title">
           <p v-if="index == 0">Pré</p>
           <p v-else>{{index}}° ano</p>
         </div>
@@ -21,12 +21,14 @@
 
 <script>
 import BaseLayout from "@/views/Layouts/BaseLayout.vue";
+import SearchBar from "@/components/Elements/SearchBar.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Kids",
   components: {
     BaseLayout,
+    SearchBar
   },
   methods: {
     ...mapActions(["bindKids"]),
@@ -64,7 +66,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/scss/styles.scss";
+@import "@/scss/_variables.scss";
 
   .kids-wrapper {
     display: flex;

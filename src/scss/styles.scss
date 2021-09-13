@@ -32,6 +32,24 @@ a {
   margin-bottom: 1rem;
 }
 
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: $text-color;
+  opacity: 0.5; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: $text-color;
+  opacity: 0.5; /* Firefox */
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: $text-color;
+  opacity: 0.5; /* Firefox */
+}
+
 //GENERAL
 .container {
   padding: 40px;

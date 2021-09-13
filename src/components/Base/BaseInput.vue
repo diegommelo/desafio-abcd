@@ -5,6 +5,7 @@
       @input="onInput"
       :type="type"
       :name="name"
+      :placeholder="placeholder"
       required
       class="base-input"
     />
@@ -86,13 +87,14 @@ export default {
   padding-right: 2.3rem;
   padding-left: 0.3rem;
   &:focus {
-    border-color: $primary-dark;
+    border-color: $primary-light;
   }
 }
 .icon {
   position: absolute;
   top: 1.5rem;
   right: 0.8rem;
+  color: $primary;
 }
 .base-field {
   position: relative;

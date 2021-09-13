@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/scss/styles.scss";
+@import "@/scss/_variables.scss";
 
 .login {
   height: 100vh;
