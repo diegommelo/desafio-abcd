@@ -73,6 +73,27 @@ const store = new Vuex.Store({
     setSuccessMessage({ commit }, successMessage) {
       commit("setSuccessMessage", successMessage);
     },
+    addKid({ commit }, kid) {
+      return new Promise((resolve, reject) => {
+        db.collection("kids").add({
+          name: kid.name,
+          schoo: kid.school,
+          year: parseInt(kid.year),
+          avatar: kid.avatar,
+          consent: kid.consent,
+        })
+          .then(() => {
+            commit("setIsSuccess", true);
+            commit("setSuccessMessage", "New kid added!");
+            resolve();
+          })
+          .catch((error) => {
+            commit("setIsError", true);
+            commit("setErrorMessage", error.message);
+            reject();
+          });
+        });
+    },
     userLogin({ commit }, payload) {
       return new Promise((resolve, reject) => {
         firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)

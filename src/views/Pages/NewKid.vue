@@ -18,16 +18,16 @@
               <b-input type="text"  name="school" v-model="form.school"></b-input>
             </div>
             <div class="new-kid-year">
-              <div>
-                <img :src="kidImage" class="kid" />
+              <div class="new-kid-year__kid-wrapper">
+                <img :src="kidImage"/>
               </div>
             <div class="new-kid-year__school-year">
                 <p>Ano Escolar</p>
                 <div class="new-kid-school-year">
-                  <b-radio name="year" v-model="form.year" option="0" label="Pré" id="year0" type="radio"></b-radio>
-                  <b-radio name="year" v-model="form.year" option="1" label="1" id="year1" type="radio"></b-radio>
-                  <b-radio name="year" v-model="form.year" option="2" label="2" id="year2" type="radio"></b-radio>
-                  <b-radio name="year" v-model="form.year" option="3" label="3" id="year3" type="radio"></b-radio>
+                  <b-radio name="year" v-model="form.year" option="0" label="Pré" id="year0" type="radio" checked></b-radio>
+                  <b-radio name="year" v-model="form.year" option="1" label="1" id="year1" type="radio" ></b-radio>
+                  <b-radio name="year" v-model="form.year" option="2" label="2" id="year2" type="radio" ></b-radio>
+                  <b-radio name="year" v-model="form.year" option="3" label="3" id="year3" type="radio" ></b-radio>
                 </div>
                 <div class="new-kid-school-year__pre">
                   <p><strong>Pré I:</strong> Aluno completou 4 anos antes do dia 31 de março de 2020</p>
@@ -50,6 +50,7 @@
 
 <script>
 import BaseLayout from '@/views/Layouts/BaseLayout.vue'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'NewKid',
@@ -60,20 +61,40 @@ export default {
     return {
       form: {
         name: '',
-        avatar: '',
-        year: '',
+        avatar: 'sr-goiaba',
+        year: 0,
         school: '',
         consent: false,
       },
     }
   },
   computed: {
+    ...mapGetters([
+      'errorMessage'
+    ]),
     defaultAvatar () {
       return require(`@/assets/kids/sr-goiaba.png`);
     },
     kidImage () {
       return require(`@/assets/kid.png`);
     }
+  },
+  methods: {
+    ...mapActions(['addKid']),
+    onNewKid() {
+      if(this.form.consent) {
+        this.addKid(this.form).then(() => {
+          this.$router.push('/kids');
+        }).catch(() => {
+          console.error(this.errorMessage);
+        });
+      } else {
+      alert('Aceite o termo de consentimento');
+      }
+    },
+    changeAvatar() {
+      console.log('em breve');
+    },
   }
 }
 </script>
@@ -96,7 +117,12 @@ export default {
   justify-content: space-between;
 }
 .new-kid-year {
-  padding: 20px 20px 0 20px;
+  padding: 0 20px 0 20px;
+}
+.new-kid-year__kid-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .new-kid-year__school-year {
   width: 100%;
