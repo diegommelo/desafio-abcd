@@ -93,7 +93,7 @@ export default {
       }
     },
     changeAvatar() {
-      console.log('em breve');
+      alert('em construção')
     },
   }
 }

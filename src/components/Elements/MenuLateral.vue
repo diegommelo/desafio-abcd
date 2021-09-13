@@ -118,6 +118,11 @@ export default {
   margin-top: 40px;
   width: 100%;
 }
+
+  .menu-lateral__content a.router-link-active li {
+    background-color: $primary !important;
+    color: $white;
+  }
 @media screen and (min-width: 1400px) {
   .menu-lateral ul {
     font-size: 1.2rem !important;

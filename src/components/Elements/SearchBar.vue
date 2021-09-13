@@ -1,7 +1,7 @@
 <template>
   <div class="search-bar">
     <div class="search-input">
-      <b-input type="search" v-model="search" placeholder="Pesquisar" icon="search"></b-input>
+      <b-input type="search" v-model="search" placeholder="Pesquisar (em breve)" icon="search"></b-input>
     </div>
     <div class="filter">
       <p>Filtrar por</p>

@@ -87,7 +87,7 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content: center;    
+  justify-content: flex-start;    
 }
 .kids-year p {
   margin-bottom: 10px;
@@ -108,6 +108,7 @@ export default {
     margin: 20px 0;
   }
   .kid-card {
+    width: 10vw;
     padding: 0 30px 0 30px;
   }
 }

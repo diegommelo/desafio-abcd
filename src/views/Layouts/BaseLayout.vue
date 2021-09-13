@@ -1,6 +1,7 @@
 <template>
   <div class="base-layout">
-    <MenuLateral class="is-mobile"/>
+    <MenuLateral class="is-desktop"/>
+    <MenuMobile class="is-mobile"/>
     <section class="content">
       <slot></slot>
     </section>
@@ -9,10 +10,13 @@
 
 <script>
 import MenuLateral from "@/components/Elements/MenuLateral.vue";
+import MenuMobile from "@/components/Elements/MenuMobile.vue";
+
 export default {
   name: "BaseLayout",
   components: {
     MenuLateral,
+    MenuMobile
   },
 };
 </script>
@@ -21,19 +25,18 @@ export default {
 @import "../../scss/styles.scss";
 
 .base-layout {
-  display: flex;
   width: 100%;
 }
 .content {
   width: 100%;
 }
-  .is-mobile {
+  .is-desktop {
     display: none;
   }
 
 //ipad
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-  .is-mobile {
+  .is-desktop {
     display: none !important;
   }
   .content {
@@ -50,14 +53,20 @@ export default {
 }
 
 @media screen and (min-width: 768px) {
-  .is-mobile {
+  .is-desktop {
     display: flex;
   }
   .content {
     width: 80vw;
   }
+  .is-mobile {
+    display: none;
+  }
 }
 @media screen and (min-width: 992px) {
+.base-layout {
+  display: flex;
+}
 }
 
 @media screen and (min-width: 1200px) {
