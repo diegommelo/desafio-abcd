@@ -24,6 +24,22 @@ $ npm install
 $ npm run serve
 ```
 
+## Live Version
+
+[Desafio Instituto ABCD](https://abcd-67e6f.web.app)
+
+- Login: teste@teste.com
+- Password: teste1
+
+## To-do
+
+- Search
+- Better form validation
+- Improve mobile navigation
+- Avatar selector
+- Unit tests
+- Better notifications
+
 ## Technologies
 
 - [Vue.js](https://vuejs.org/)

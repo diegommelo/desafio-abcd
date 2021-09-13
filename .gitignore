@@ -21,3 +21,8 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# firebase
+.firebase/
+.firebaserc
+firebase.json
