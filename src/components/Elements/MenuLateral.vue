@@ -88,7 +88,7 @@ export default {
 .menu-lateral-icon {
   color: $text-color;
   opacity: 0.7;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 .menu-lateral {
   width: 20vw;
@@ -101,7 +101,7 @@ export default {
   opacity: 0.7;
   transition: opacity 0.2s ease-in-out;
   padding: 20px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin: 30px 0;
 }
 .menu-lateral ul {
@@ -116,6 +116,18 @@ export default {
 }
 .menu-lateral__content {
   margin-top: 40px;
+  width: 100%;
+}
+@media screen and (min-width: 1400px) {
+  .menu-lateral ul {
+    font-size: 1.2rem !important;
+  }
+  .menu-lateral-icon {
+    padding-right: 15px;
+  }
+  .menu-lateral li {
+    padding: 20px 20px 20px 30px;
+  }
 }
 
 </style>

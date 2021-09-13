@@ -43,21 +43,26 @@ export default {
 
   .base-card {
     background-color: $white;
-    width: 10vw;
+    width: 20vw;
     padding: 15px 15px 5px 15px;
     border-radius: 10px;
     box-shadow: 0 4px 0 $white-box-shadow;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .base-card-content span {
     display: block;
     margin: 10px 0;
   }
   .base-card img {
-    width: 10vw;
+    width: 100%;
     border-radius: 10px;
   }
   .name {
     font-weight: bold;
+  }
+  @media screen and (min-width: 992px) {
+    .base-card {
+      width: 100%;
+    }
   }
 </style>

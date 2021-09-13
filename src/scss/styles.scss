@@ -52,5 +52,26 @@ a {
 
 //GENERAL
 .container {
-  padding: 40px;
+  padding: 20px;
+}
+//ipad
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+//responsive
+@media screen and (min-width: 376px) {
+}
+
+@media screen and (min-width: 576px) {
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 40px;
+  }
+}
+@media screen and (min-width: 992px) {
+}
+
+@media screen and (min-width: 1200px) {
 }

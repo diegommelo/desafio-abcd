@@ -1,7 +1,7 @@
 <template>
   <div class="base-radio">
     <label> {{ label }} </label>
-    <input :type="type" :id="id" :name="name" :value="option" :checked="checked" @input="onInput" :required="required" />
+    <input :type="type" :id="id" :name="name" :value="option" :checked="checked" @input="onInput" />
     <span class="checkmark"></span>
   </div>
 </template>

@@ -107,22 +107,29 @@ export default {
   border-radius: 5px;
   box-shadow: 0 4px 0 $white-box-shadow;
   margin-top: 20px;
-  width: 30vw;
+  width: 80vw;
   margin: 30px auto;
   padding: 20px;
 }
-.new-kid-school-year, .new-kid-consent, .new-kid-year {
+.new-kid-school-year, .new-kid-consent {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 .new-kid-year {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;  
   padding: 0 20px 0 20px;
 }
 .new-kid-year__kid-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.new-kid-year__kid-wrapper img {
+  width: 25vw;
 }
 .new-kid-year__school-year {
   width: 100%;
@@ -159,7 +166,7 @@ export default {
   color: $primary-dark;
 }
 .change-avatar {
-  width: 10vw;
+  width: 40vw;
   margin: 0 auto;
 }
 .change-avatar__button {
@@ -174,6 +181,50 @@ export default {
 .change-avatar img {
   width: 100%;
   border-radius: 20px;
+}
+
+//ipad
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+}
+
+//responsive
+@media screen and (min-width: 376px) {
+}
+
+@media screen and (min-width: 576px) {
+
+}
+
+@media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 992px) {
+  .new-kid {
+    width: 30vw;
+  }
+  .change-avatar {
+    width: 100%;
+  }
+  .change-avatar__img {
+    width: 30%;
+    margin: 0 auto;
+  }  
+.change-avatar__button {
+  margin: -20px auto;
+  width: 40%;
+}
+.new-kid-year {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+.new-kid-year__kid-wrapper img {
+  width: 100%;
+}  
+}
+
+@media screen and (min-width: 1200px) {
 }
 
 </style>

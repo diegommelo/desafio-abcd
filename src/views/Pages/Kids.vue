@@ -74,7 +74,7 @@ export default {
     justify-content: left;
   }
   .kid-card {
-    padding: 20px;
+    padding: 10px;
   }
 
 .kids-year{
@@ -85,8 +85,9 @@ export default {
 }
 .kids-year-wrapper {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: left;    
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;    
 }
 .kids-year p {
   margin-bottom: 10px;
@@ -102,7 +103,14 @@ export default {
 @media screen and (min-width: 768px) {
   }
 @media screen and (min-width: 992px) {
+  .kids-year-wrapper {
+    width: 40vw;
+    margin: 20px 0;
   }
+  .kid-card {
+    padding: 0 30px 0 30px;
+  }
+}
 @media screen and (min-width: 1200px) {
   }
   
