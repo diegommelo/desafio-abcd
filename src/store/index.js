@@ -50,7 +50,7 @@ const store = new Vuex.Store({
   },
   actions: {
     bindKids: firestoreAction(({ bindFirestoreRef }) => {
-      return bindFirestoreRef("kids", db.collection("kids"));
+      return bindFirestoreRef("kids", db.collection("kids").orderBy("year", "asc"));
     }),
     setUser({ commit }, user) {
       commit("setUser", user);
@@ -111,14 +111,7 @@ const store = new Vuex.Store({
     errorMessage: state => state.errorMessage,
     isSuccess: state => state.isSuccess,
     successMessage: state => state.successMessage,
-    kids: state => state.kids.map(kid => {
-      return {
-        nome: kid.nome,
-        imagem: kid.imagem,
-        ano: kid.ano,
-        id: kid.id,
-      }
-    }),
+    kids: state => state.kids
   }
 });
 

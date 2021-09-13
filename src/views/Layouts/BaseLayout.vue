@@ -23,7 +23,6 @@ export default {
 .base-layout {
   display: flex;
   width: 100%;
-  height: 100vh;
 }
 .content {
   width: 80vw;

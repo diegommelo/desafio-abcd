@@ -10,6 +10,7 @@ import { dom } from "@fortawesome/fontawesome-svg-core";
 import BaseInput from "@/components/Base/BaseInput";
 import BaseLabel from "@/components/Base/BaseLabel";
 import BaseButton from "@/components/Base/BaseButton";
+import BaseCard from "@/components/Base/BaseCard";
 import Logo from "@/components/Logo";
 
 library.add(fas);
@@ -19,6 +20,7 @@ Vue.component("font-awesome-icon", FontAwesomeIcon);
 Vue.component("b-input", BaseInput);
 Vue.component("b-label", BaseLabel);
 Vue.component("b-button", BaseButton);
+Vue.component("b-card", BaseCard);
 Vue.component("Logo", Logo);
 
 Vue.config.productionTip = false;
