@@ -1,9 +1,22 @@
 <template>
   <BaseLayout>
     <div class="container">
-      <SearchBar />
+      <SearchBar v-model="search" @input="onSearch"/>
+      <!-- Search Result -->
       <div class="kids-wrapper">
+        <div v-if="searchResults.length >0" class="kids-year">
+          <div class="kids-year-title">
+            <p>Resultado da busca</p>
+          </div>
+          <div class="kids-year-wrapper">
+            <div v-for="kid in searchResults" :key="kid.id" class="kid-card">
+              <b-card :name="kid.name" :avatar="kid.avatar" :year="kid.year"></b-card>
+            </div>
+          </div>
+        </div>
+        <!-- Kids List -->
         <div
+          v-else
           v-for="(value, index) in kidsOrderedByYear"
           :key="index"
           class="kids-year"
@@ -30,12 +43,29 @@ import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "Kids",
+  data () {
+    return {
+      search: "",
+      searchResults: [],
+    };
+  },
   components: {
     BaseLayout,
     SearchBar,
   },
   methods: {
     ...mapActions(["bindKids"]),
+    onSearch(event){
+      this.search = event;
+      if(this.search.length == 0){
+        this.searchResults = [];
+      }
+      if(this.search.length >= 3) {
+        this.searchResults = this.kids.filter(kid => {
+          return kid.name.toLowerCase().includes(this.search.toLowerCase());
+        });
+      }
+    }    
   },
   computed: {
     ...mapGetters(["kids"]),
@@ -78,7 +108,7 @@ export default {
   justify-content: left;
 }
 .kid-card {
-  padding: 10px;
+  padding: 5px;
 }
 
 .kids-year {
@@ -90,7 +120,7 @@ export default {
 .kids-year-wrapper {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: flex-start;
 }
 .kids-year p {
@@ -100,26 +130,14 @@ export default {
 }
 
 //responsive
-@media screen and (min-width: 376px) {
-}
-@media screen and (min-width: 576px) {
-}
-@media screen and (min-width: 768px) {
-}
 @media screen and (min-width: 992px) {
   .kids-year-wrapper {
-    width: 40vw;
     margin: 20px 0;
   }
   .kid-card {
     width: 10vw;
-    padding: 0 30px 0 30px;
+    padding: 0 30px 30px 30px;
   }
 }
-@media screen and (min-width: 1200px) {
-}
 
-//ipad
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-}
 </style>

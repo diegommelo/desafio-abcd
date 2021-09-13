@@ -4,8 +4,9 @@
       <b-input
         type="search"
         v-model="search"
-        placeholder="Pesquisar (em breve)"
+        placeholder="Pesquisar por nome"
         icon="search"
+        @input="handleInput"
       ></b-input>
     </div>
     <div class="filter">
@@ -31,6 +32,10 @@ export default {
   methods: {
     newKid() {
       this.$router.push({ name: "NewKid" });
+    },
+    handleInput(event) {
+      this.search = event
+      this.$emit("input", this.search);
     },
   },
 };

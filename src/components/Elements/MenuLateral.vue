@@ -93,6 +93,7 @@ export default {
   width: 20vw;
   background-color: $white;
   min-height: 100vh;
+  border-right: 4px solid $white-box-shadow;
 }
 .menu-lateral li {
   color: $text-color;

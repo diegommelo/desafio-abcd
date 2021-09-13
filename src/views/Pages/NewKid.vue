@@ -133,11 +133,11 @@ export default {
             console.error(this.errorMessage);
           });
       } else {
-        alert("Aceite o termo de consentimento");
+        alert("Por favor, aceite o termo de consentimento.");
       }
     },
     changeAvatar() {
-      alert("em construção");
+      alert("Em Construção");
     },
   },
 };
