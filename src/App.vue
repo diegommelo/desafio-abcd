@@ -5,15 +5,14 @@
 </template>
 
 <script>
-  import titleMixin from '@/mixins/titleMixin'
+import titleMixin from "@/mixins/titleMixin";
 
- export default {
-   name: 'App',
-   mixins: [titleMixin],
-   title: "EduEdu - Instituto ABCD"
- }
+export default {
+  name: "App",
+  mixins: [titleMixin],
+  title: "EduEdu - Instituto ABCD",
+};
 </script>
-
 
 <style lang="scss">
 @import "@/scss/styles.scss";

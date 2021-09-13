@@ -27,8 +27,7 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex'
-
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Login",
@@ -54,13 +53,15 @@ export default {
   methods: {
     ...mapActions(["userLogin"]),
     onLogin() {
-      this.userLogin(this.form).then(() => {
-        this.$router.push("/kids");
-      }).catch(() => {
-        console.log(this.errorMessage)
-      })
+      this.userLogin(this.form)
+        .then(() => {
+          this.$router.push("/kids");
+        })
+        .catch(() => {
+          console.log(this.errorMessage);
+        });
     },
-  }
+  },
 };
 </script>
 

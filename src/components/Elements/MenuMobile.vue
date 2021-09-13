@@ -19,7 +19,7 @@
               size="lg"
               class="nav-item__icon"
             />
-              Perfil dos Alunos
+            Perfil dos Alunos
           </li>
         </router-link>
         <router-link to="/kids">
@@ -27,9 +27,9 @@
             <font-awesome-icon
               icon="file-signature"
               size="lg"
-              class="nav-item__icon"              
-            />            
-              Prova de Português
+              class="nav-item__icon"
+            />
+            Prova de Português
           </li>
         </router-link>
         <router-link to="/kids">
@@ -37,9 +37,9 @@
             <font-awesome-icon
               icon="desktop"
               size="lg"
-class="nav-item__icon"              
-            />            
-              Atividades Digitais
+              class="nav-item__icon"
+            />
+            Atividades Digitais
           </li>
         </router-link>
         <router-link to="/kids">
@@ -47,99 +47,102 @@ class="nav-item__icon"
             <font-awesome-icon
               icon="question-circle"
               size="lg"
-class="nav-item__icon"              
-            />            
-              Ajuda
+              class="nav-item__icon"
+            />
+            Ajuda
           </li>
         </router-link>
         <router-link to="/kids">
           <li class="nav-item">
             <font-awesome-icon icon="cog" size="lg" class="nav-item__icon" />
-              Configurações
+            Configurações
           </li>
         </router-link>
         <router-link to="/kids">
           <li class="nav-item">
-            <font-awesome-icon icon="sign-out-alt" size="lg" class="nav-item__icon"/>            
-              Sair
+            <font-awesome-icon
+              icon="sign-out-alt"
+              size="lg"
+              class="nav-item__icon"
+            />
+            Sair
           </li>
         </router-link>
-      </ul>      
+      </ul>
     </nav>
   </div>
 </template>
 
 <script>
-import Logo from '@/components/Logo'
+import Logo from "@/components/Logo";
 
 export default {
-  name: 'MenuMobile',
+  name: "MenuMobile",
   components: {
-    Logo
+    Logo,
   },
-  data () {
+  data() {
     return {
-      isOpen: false
-    }
+      isOpen: false,
+    };
   },
   methods: {
     toggleMenu() {
-      this.isOpen = !this.isOpen
-    }
-  }
+      this.isOpen = !this.isOpen;
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-  @import '@/scss/_variables.scss';
-  .menu-mobile {
-    height: 8vh;
-    background-color: $background-color-dark;
-    box-shadow: 0 4px 0 $background-color-dark-shadow;
-  }
-  .menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;    
-    height: 100%;
-  }  
-  .menu-mobile .navbar {
-    display: flex;
-  }
-      .nav-menu {
-        flex-direction: column;
-        background-color: $white;
-        width: 100vw;
-        text-align: left;
-        transition: 0.3s;
-        box-shadow:
-            0 10px 27px rgba(0, 0, 0, 0.05);
-                margin: 0;
-    padding: 0;
-    z-index: 1;
-    background-color: $background-color-dark;
-    box-shadow: 0 4px 0 $background-color-dark-shadow;
-    }
+@import "@/scss/_variables.scss";
+.menu-mobile {
+  height: 8vh;
+  background-color: $background-color-dark;
+  box-shadow: 0 4px 0 $background-color-dark-shadow;
+}
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+.menu-mobile .navbar {
+  display: flex;
+}
+.nav-menu {
+  flex-direction: column;
+  background-color: $white;
+  width: 100vw;
+  text-align: left;
+  transition: 0.3s;
+  box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  background-color: $background-color-dark;
+  box-shadow: 0 4px 0 $background-color-dark-shadow;
+}
 
-    .nav-menu.active {
-        left: 0;
-    }
+.nav-menu.active {
+  left: 0;
+}
 
-    .nav-item {
-        margin: 2.5rem 0;
-    }
-    .nav-item__icon {
-        margin-right: 0.5rem;
-    }
-    .nav-menu li {
-    list-style: none;
-    padding-left: 30px;
+.nav-item {
+  margin: 2.5rem 0;
+}
+.nav-item__icon {
+  margin-right: 0.5rem;
+}
+.nav-menu li {
+  list-style: none;
+  padding-left: 30px;
 }
 
 .nav-menu a {
-    text-decoration: none;
-    font-size: 1.1rem;
-    color: $text-color;
+  text-decoration: none;
+  font-size: 1.1rem;
+  color: $text-color;
 }
 .hamburger {
   display: flex;

@@ -8,11 +8,11 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    redirect: "/login"
+    redirect: "/login",
   },
   {
     path: "*",
-    redirect: "/login"
+    redirect: "/login",
   },
   {
     path: "/login",
@@ -24,16 +24,16 @@ const routes = [
     name: "Kids",
     component: () => import("../views/Pages/Kids.vue"),
     meta: {
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
   {
     path: "/kids/new",
     name: "NewKid",
     component: () => import("../views/Pages/NewKid.vue"),
     meta: {
-      requiresAuth: true
-    }
+      requiresAuth: true,
+    },
   },
 ];
 
@@ -43,14 +43,13 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   const currentUser = firebase.auth().currentUser;
-  if(currentUser) store.dispatch("setUser", currentUser);
-  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  if (currentUser) store.dispatch("setUser", currentUser);
+  const requiresAuth = to.matched.some((record) => record.meta.requiresAuth);
   if (requiresAuth && !currentUser) next("login");
   else if (!requiresAuth && currentUser) {
-    if(to.name === "Login") next("/kids");
+    if (to.name === "Login") next("/kids");
     else next();
-  }
-  else next();
+  } else next();
 });
 
 export default router;

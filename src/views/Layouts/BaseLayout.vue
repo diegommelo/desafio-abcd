@@ -1,7 +1,7 @@
 <template>
   <div class="base-layout">
-    <MenuLateral class="is-desktop"/>
-    <MenuMobile class="is-mobile"/>
+    <MenuLateral class="is-desktop" />
+    <MenuMobile class="is-mobile" />
     <section class="content">
       <slot></slot>
     </section>
@@ -16,7 +16,7 @@ export default {
   name: "BaseLayout",
   components: {
     MenuLateral,
-    MenuMobile
+    MenuMobile,
   },
 };
 </script>
@@ -30,9 +30,9 @@ export default {
 .content {
   width: 100%;
 }
-  .is-desktop {
-    display: none;
-  }
+.is-desktop {
+  display: none;
+}
 
 //ipad
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -41,7 +41,7 @@ export default {
   }
   .content {
     width: 100% !important;
-  }  
+  }
 }
 
 //responsive
@@ -49,7 +49,6 @@ export default {
 }
 
 @media screen and (min-width: 576px) {
-
 }
 
 @media screen and (min-width: 768px) {
@@ -64,12 +63,11 @@ export default {
   }
 }
 @media screen and (min-width: 992px) {
-.base-layout {
-  display: flex;
-}
+  .base-layout {
+    display: flex;
+  }
 }
 
 @media screen and (min-width: 1200px) {
-
 }
 </style>

@@ -1,36 +1,43 @@
 <template>
   <div class="search-bar">
     <div class="search-input">
-      <b-input type="search" v-model="search" placeholder="Pesquisar (em breve)" icon="search"></b-input>
+      <b-input
+        type="search"
+        v-model="search"
+        placeholder="Pesquisar (em breve)"
+        icon="search"
+      ></b-input>
     </div>
     <div class="filter">
       <p>Filtrar por</p>
       <small>Em breve</small>
     </div>
     <div class="new-student">
-      <b-button classes="is-primary" icon="plus" @click="newKid()">Adicionar novo aluno</b-button>
+      <b-button classes="is-primary" icon="plus" @click="newKid()"
+        >Adicionar novo aluno</b-button
+      >
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'SearchBar',
-  data () {
+  name: "SearchBar",
+  data() {
     return {
-      search: ''
-    }
+      search: "",
+    };
   },
   methods: {
     newKid() {
-      this.$router.push({name: 'NewKid'})
-    }
+      this.$router.push({ name: "NewKid" });
+    },
   },
-}
+};
 </script>
 
 <style lang="scss">
-@import '@/scss/styles.scss';
+@import "@/scss/styles.scss";
 
 .search-bar {
   display: flex;
@@ -53,18 +60,19 @@ export default {
 .filter p {
   margin: 10px;
 }
-.search-input,.filter {
+.search-input,
+.filter {
   width: 100%;
   text-align: center;
   margin: 10px 0;
 }
-  .new-student {
-    width: 80%;
-  }
+.new-student {
+  width: 80%;
+}
 
 //ipad
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-    .new-student {
+  .new-student {
     width: 50% !important;
   }
 }
@@ -74,11 +82,10 @@ export default {
 }
 
 @media screen and (min-width: 576px) {
-
 }
 
 @media screen and (min-width: 768px) {
-  }
+}
 @media screen and (min-width: 992px) {
   .search-bar {
     display: flex;
@@ -99,6 +106,5 @@ export default {
 }
 
 @media screen and (min-width: 1200px) {
-
 }
 </style>

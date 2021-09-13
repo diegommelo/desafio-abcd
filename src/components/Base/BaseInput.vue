@@ -63,7 +63,7 @@ export default {
     onInput(e) {
       this.inputValue = e.target.value;
       this.$emit("input", this.inputValue);
-    }
+    },
   },
 };
 </script>

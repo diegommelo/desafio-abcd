@@ -51,7 +51,11 @@
         </router-link>
         <a href="#" @click="onLogout">
           <li>
-            <font-awesome-icon icon="sign-out-alt" size="lg" class="menu-lateral-icon" />
+            <font-awesome-icon
+              icon="sign-out-alt"
+              size="lg"
+              class="menu-lateral-icon"
+            />
             Sair
           </li>
         </a>
@@ -72,13 +76,15 @@ export default {
   methods: {
     ...mapActions(["userLogout"]),
     onLogout() {
-      this.userLogout().then(() => {
-        this.$router.push("/login");
-      }).catch(() => {
-        console.log(this.errorMessage);
-      });
-    }
-  }
+      this.userLogout()
+        .then(() => {
+          this.$router.push("/login");
+        })
+        .catch(() => {
+          console.log(this.errorMessage);
+        });
+    },
+  },
 };
 </script>
 
@@ -119,10 +125,10 @@ export default {
   width: 100%;
 }
 
-  .menu-lateral__content a.router-link-active li {
-    background-color: $primary !important;
-    color: $white;
-  }
+.menu-lateral__content a.router-link-active li {
+  background-color: $primary !important;
+  color: $white;
+}
 @media screen and (min-width: 1400px) {
   .menu-lateral ul {
     font-size: 1.2rem !important;
@@ -134,5 +140,4 @@ export default {
     padding: 20px 20px 20px 30px;
   }
 }
-
 </style>

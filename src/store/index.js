@@ -1,8 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import firebase from "firebase/app";
-import {db} from "@/config/firebase-db";
-import {vuexfireMutations, firestoreAction} from "vuexfire";
+import { db } from "@/config/firebase-db";
+import { vuexfireMutations, firestoreAction } from "vuexfire";
 
 Vue.use(Vuex);
 
@@ -50,7 +50,10 @@ const store = new Vuex.Store({
   },
   actions: {
     bindKids: firestoreAction(({ bindFirestoreRef }) => {
-      return bindFirestoreRef("kids", db.collection("kids").orderBy("year", "asc"));
+      return bindFirestoreRef(
+        "kids",
+        db.collection("kids").orderBy("year", "asc")
+      );
     }),
     setUser({ commit }, user) {
       commit("setUser", user);
@@ -75,13 +78,14 @@ const store = new Vuex.Store({
     },
     addKid({ commit }, kid) {
       return new Promise((resolve, reject) => {
-        db.collection("kids").add({
-          name: kid.name,
-          schoo: kid.school,
-          year: parseInt(kid.year),
-          avatar: kid.avatar,
-          consent: kid.consent,
-        })
+        db.collection("kids")
+          .add({
+            name: kid.name,
+            schoo: kid.school,
+            year: parseInt(kid.year),
+            avatar: kid.avatar,
+            consent: kid.consent,
+          })
           .then(() => {
             commit("setIsSuccess", true);
             commit("setSuccessMessage", "New kid added!");
@@ -92,48 +96,54 @@ const store = new Vuex.Store({
             commit("setErrorMessage", error.message);
             reject();
           });
-        });
+      });
     },
     userLogin({ commit }, payload) {
       return new Promise((resolve, reject) => {
-        firebase.auth().signInWithEmailAndPassword(payload.email, payload.password)
-        .then((user) => {
-          commit("setUser", user);
-          commit("setIsLoggedIn", true);
-          resolve();
-        })
-        .catch(() => {
-          commit("setIsError", true);
-          commit("setErrorMessage", "Usuário ou senha incorreta");
-          reject();
-        });      
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(payload.email, payload.password)
+          .then((user) => {
+            commit("setUser", user);
+            commit("setIsLoggedIn", true);
+            resolve();
+          })
+          .catch(() => {
+            commit("setIsError", true);
+            commit("setErrorMessage", "Usuário ou senha incorreta");
+            reject();
+          });
       });
     },
     userLogout({ commit }) {
       return new Promise((resolve, reject) => {
-        firebase.auth().signOut().then(() => {
-          commit("setUser", {});
-          commit("setIsLoggedIn", false);
-          resolve();
-        }).catch(() => {
-          commit("setIsError", true);
-          commit("setErrorMessage", "Erro ao encerrar a sessão");
-          reject();
-        });
+        firebase
+          .auth()
+          .signOut()
+          .then(() => {
+            commit("setUser", {});
+            commit("setIsLoggedIn", false);
+            resolve();
+          })
+          .catch(() => {
+            commit("setIsError", true);
+            commit("setErrorMessage", "Erro ao encerrar a sessão");
+            reject();
+          });
       });
-    }
+    },
   },
   modules: {},
   getters: {
-    user: state => state.user,
-    isLoggedIn: state => state.isLoggedIn,
-    isLoading: state => state.isLoading,
-    isError: state => state.isError,
-    errorMessage: state => state.errorMessage,
-    isSuccess: state => state.isSuccess,
-    successMessage: state => state.successMessage,
-    kids: state => state.kids
-  }
+    user: (state) => state.user,
+    isLoggedIn: (state) => state.isLoggedIn,
+    isLoading: (state) => state.isLoading,
+    isError: (state) => state.isError,
+    errorMessage: (state) => state.errorMessage,
+    isSuccess: (state) => state.isSuccess,
+    successMessage: (state) => state.successMessage,
+    kids: (state) => state.kids,
+  },
 });
 
 export default store;

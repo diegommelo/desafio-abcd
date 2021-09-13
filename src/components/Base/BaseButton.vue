@@ -5,10 +5,7 @@
     :disabled="disabled"
     @click="handleClick"
   >
-      <i
-        v-if="icon"
-        :class="['icon-button', 'fas', `fa-${icon}`, 'fa-lg']"
-      ></i>
+    <i v-if="icon" :class="['icon-button', 'fas', `fa-${icon}`, 'fa-lg']"></i>
     <slot></slot>
   </button>
 </template>
@@ -39,7 +36,7 @@ export default {
     },
     icon: {
       type: String,
-          }
+    },
   },
   methods: {
     handleClick() {
