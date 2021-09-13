@@ -2,7 +2,7 @@
   <nav class="menu-lateral">
     <Logo size="small" />
     <ul>
-      <router-link to="#">
+      <router-link to="/kids">
         <li>
           <font-awesome-icon
             icon="user-circle"
