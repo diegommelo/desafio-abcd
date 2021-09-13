@@ -58,7 +58,7 @@ export default {
           this.$router.push("/kids");
         })
         .catch(() => {
-          console.log(this.errorMessage);
+          alert(this.errorMessage);
         });
     },
   },

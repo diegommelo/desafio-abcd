@@ -22,7 +22,7 @@
             Perfil dos Alunos
           </li>
         </router-link>
-        <router-link to="/kids">
+        <router-link to="#">
           <li class="nav-item">
             <font-awesome-icon
               icon="file-signature"
@@ -32,7 +32,7 @@
             Prova de Português
           </li>
         </router-link>
-        <router-link to="/kids">
+        <router-link to="#">
           <li class="nav-item">
             <font-awesome-icon
               icon="desktop"
@@ -42,7 +42,7 @@
             Atividades Digitais
           </li>
         </router-link>
-        <router-link to="/kids">
+        <router-link to="#">
           <li class="nav-item">
             <font-awesome-icon
               icon="question-circle"
@@ -52,13 +52,13 @@
             Ajuda
           </li>
         </router-link>
-        <router-link to="/kids">
+        <router-link to="#">
           <li class="nav-item">
             <font-awesome-icon icon="cog" size="lg" class="nav-item__icon" />
             Configurações
           </li>
         </router-link>
-        <router-link to="/kids">
+        <a href="#" @click="onLogout">
           <li class="nav-item">
             <font-awesome-icon
               icon="sign-out-alt"
@@ -67,7 +67,7 @@
             />
             Sair
           </li>
-        </router-link>
+        </a>
       </ul>
     </nav>
   </div>
@@ -75,18 +75,22 @@
 
 <script>
 import Logo from "@/components/Logo";
+import {mapActions} from "vuex";
+import logoutMixin from "@/mixins/logoutMixin";
 
 export default {
   name: "MenuMobile",
   components: {
     Logo,
   },
+  mixins: [logoutMixin],
   data() {
     return {
       isOpen: false,
     };
   },
   methods: {
+    ...mapActions(["userLogout"]),
     toggleMenu() {
       this.isOpen = !this.isOpen;
     },

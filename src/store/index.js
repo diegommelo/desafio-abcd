@@ -110,7 +110,7 @@ const store = new Vuex.Store({
           })
           .catch(() => {
             commit("setIsError", true);
-            commit("setErrorMessage", "Usuário ou senha incorreta");
+            commit("setErrorMessage", "Usuário ou senha incorreto");
             reject();
           });
       });

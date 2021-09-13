@@ -67,23 +67,16 @@
 <script>
 import Logo from "@/components/Logo.vue";
 import { mapActions } from "vuex";
+import logoutMixin from '@/mixins/logoutMixin';
 
 export default {
   name: "MenuLateral",
+  mixins: [logoutMixin],
   components: {
     Logo,
   },
   methods: {
     ...mapActions(["userLogout"]),
-    onLogout() {
-      this.userLogout()
-        .then(() => {
-          this.$router.push("/login");
-        })
-        .catch(() => {
-          console.log(this.errorMessage);
-        });
-    },
   },
 };
 </script>
