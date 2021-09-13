@@ -110,13 +110,13 @@ export default {
         school: "",
         consent: false,
       },
+      defaultAvatar: require(`@/assets/kids/sr-goiaba.png`),
+      avatarList: ["sr-goiaba", "juju", "nina", "zig", "carmen"]
     };
   },
   computed: {
     ...mapGetters(["errorMessage"]),
-    defaultAvatar() {
-      return require(`@/assets/kids/sr-goiaba.png`);
-    },
+
     kidImage() {
       return require(`@/assets/kid.png`);
     },
@@ -137,7 +137,12 @@ export default {
       }
     },
     changeAvatar() {
-      alert("Em Construção");
+      if(this.avatarList.indexOf(this.form.avatar) == this.avatarList.length - 1) {
+        this.form.avatar = this.avatarList[0];
+      } else {
+        this.form.avatar = this.avatarList[this.avatarList.indexOf(this.form.avatar) + 1];
+      }
+      this.defaultAvatar = require(`@/assets/kids/${this.form.avatar}.png`);
     },
   },
 };
@@ -201,7 +206,6 @@ export default {
   width: 50%;
   margin: 0 auto;
 }
-
 .new-kid-consent p {
   margin-top: 0;
   padding-left: 15px;
@@ -217,8 +221,7 @@ export default {
 .change-avatar__button {
   margin-top: -20px;
 }
-.change-avatar button {
-}
+
 .change-avatar__img {
   width: 80%;
   margin: 0 auto;
@@ -228,19 +231,7 @@ export default {
   border-radius: 20px;
 }
 
-//ipad
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-}
-
 //responsive
-@media screen and (min-width: 376px) {
-}
-
-@media screen and (min-width: 576px) {
-}
-
-@media screen and (min-width: 768px) {
-}
 @media screen and (min-width: 992px) {
   .new-kid {
     width: 30vw;
